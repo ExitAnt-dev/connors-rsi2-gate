@@ -27,6 +27,7 @@ https://render.com/deploy?repo=https://github.com/ExitAnt-dev/connors-rsi2-gate
 
 - **Gate.io account registered through ExitAnt.** At every start the bot checks your Gate.io UID with the ExitAnt server; only the UID is sent, never your keys.
 - **API key** with futures trading permission. The key must be allowed to read the account and trade USDT perpetual futures.
+  **Never enable the withdrawal permission** — the bot never withdraws, and a key without it cannot move funds out of your account even if it leaks.
   *For the Turtle merge's cash vault* the key needs the **Wallets** permission (futures ↔ spot transfer).
 - **Dual (long/short) position mode** in Gate.io USDT futures. The bot switches the account to it when no position or order is open; otherwise set it yourself in Gate.io → Futures → settings.
 - If the API key has an **IP whitelist**, add your Render service's outbound IP addresses (Render → the service → Settings → Outbound IP addresses). Otherwise Gate.io rejects the bot's calls with `IP_FORBIDDEN`, and the bot tells you the server's current IP.
