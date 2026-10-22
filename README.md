@@ -4,7 +4,7 @@ Deploy this automated trading bot to **your own Render account** as a background
 this repository contains **only the Render Blueprint (`render.yaml`)** — no source code.
 
 The bot trades **Larry Connors RSI2** or **Turtle + Connors RSI2 merge** on Gate.io USDT perpetual futures with exactly the rules of the
-TanQuant backtest engine, on the exchange's own daily candles (UTC day) for every indicator. Yahoo daily candles are used only to complete
+TanQuant backtest engine, on the exchange's own daily candles (UTC day; stocks/ETFs: US trading days only) for every indicator. Yahoo daily candles are used only to complete
 the 200-day moving average of symbols with fewer than 200 exchange candles (recently listed).
 Copy a TanQuant result with **“Copy bot setup”** and paste it into the bot to set everything up at once.
 
