@@ -4,7 +4,8 @@ Deploy this automated trading bot to **your own Render account** as a background
 this repository contains **only the Render Blueprint (`render.yaml`)** — no source code.
 
 The bot trades **Larry Connors RSI2** or **Turtle + Connors RSI2 merge** on Gate.io USDT perpetual futures with exactly the rules of the
-TanQuant backtest engine, on the same Yahoo daily candles (stocks/ETFs: New York regular session · crypto: UTC day · gold/silver: COMEX trading day).
+TanQuant backtest engine, on the exchange's own daily candles (UTC day) for every indicator. Yahoo daily candles are used only to complete
+the 200-day moving average of symbols with fewer than 200 exchange candles (recently listed).
 Copy a TanQuant result with **“Copy bot setup”** and paste it into the bot to set everything up at once.
 
 ## Deploy to Render
@@ -46,8 +47,8 @@ Nothing else to configure: the exchange, trading mode and state-file location ar
 
 ## What the bot does
 
-- Decides once per daily candle, right after Yahoo closes it, and sends market orders at once (the backtest's “fill at the close”).
-- Watches the stops itself while the asset's market is open (stocks: New York regular session) and closes at market when a stop is reached —
+- Decides once per daily candle, right after the exchange closes it (UTC midnight), and sends market orders at once (the backtest's “fill at the close”).
+- Watches the stops itself around the clock and closes at market when a stop is reached —
   the stops are **not** resting orders on the exchange, so **keep the bot running**. Stopping the bot stops the stop-watching.
 - Keeps one account per symbol (trading pocket + vault), like TanQuant's multi-asset backtest. The Turtle merge moves part of the profit to the
   vault (spot wallet) on a trend exit and reinjects it after a deep drawdown, by the USA Turtle rules.
